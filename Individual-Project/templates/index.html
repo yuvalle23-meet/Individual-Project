@@ -1,10 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-    
-</body>
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>CasinoLevi</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="static/css/bootstrap.min.css">
+      <!-- style css -->
+      <link rel="stylesheet" href="static/css/style.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="static/css/responsive.css">
+      <!-- fevicon -->
+      <link rel="icon" href="static/images/fevicon.png" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="static/css/jquery.mCustomScrollbar.min.css">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img src="static/images/loading.gif" alt="#" /></div>
+      </div>
+      <div class="wrapper">
+         <!-- end loader -->
+         <div class="sidebar">
+            <!-- Sidebar  -->
+            <nav id="sidebar">
+               <div id="dismiss">
+                  <i class="fa fa-arrow-left"></i>
+               </div>
+               <ul class="list-unstyled components">
+                  <li class="active">
+                     <a href="index.html">Home</a>
+                  </li>
+                  <li>
+                     <a href="#about">About</a>
+                  </li>
+                  <li>
+                     <a href="#game">Game</a>
+                  </li>
+                  <li>
+                     <a href="#customer">Our customer</a>
+                  </li>
+                  <li>
+                     <a href="#contact">Conatct</a>
+                  </li>
+               </ul>
+            </nav>
+         </div>
+         <div id="content">
+            <!-- header -->
+            <header>
+               <!-- header inner -->
+               <div class="head_top">
+                  <div class="header">
+                     <div class="container-fluid">
+                        <div class="row">
+                           <div class="col-md-3 logo_section">
+                              <div class="full">
+                                 <div class="center-desk">
+                                    <div class="logo">
+                                       <a href="index.html"><img src="static/images/logo.png" alt="#"></a>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-9">
+                              <div class="right_header_info">
+                                 <ul>
+                                    <li class="menu_iconb">
+                                       
+                                       {%if button:%}
+                                       <a href="{{url_for('signin')}}">Login</a>
+                                       {%else%}
+                                       <a href="{{url_for('signout')}}">Signout</a>
+                                       {%endif%}
+
+                                    </li>
+                                    <li style =" color:white;">
+                                       {{coins}}
+                                       <button type="button" id="sidebarCollapse">
+                                       <img src="static/images/jons_img1.png" width = "40" height = "40" alt="#"/>
+                                       </button>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </header>
+            <!-- end header inner -->
+            <!-- end header -->
+            <section class="slider_section">
+               <div class="banner_main">
+                  <img src="static/images/bg_main.jpg" alt="#"/>
+                  <div class="container-fluid padding3">
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div class="text-bg">
+                              <a> Welcome fellow {{rank}} rank </a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+         <!-- Categories -->
+         <!-- casino -->
+         <div id="game" class="casino">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="titlepage"  id = "middle">
+                        <h2>Our Casino Games</h2>
+                        <span></span>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-4 padding_bottom">
+                     <div class="game_box">
+                        <figure><img src="static/images/game1.jpg" alt="#"/></figure>
+                     </div>
+                     <div class="game">
+                        <h3>Game 1</h3>
+                     </div>
+                  </div>
+                  <div class="col-md-4 padding_bottom">
+                     <div class="game_box">
+                        <a href = "{{url_for('blackjack')}}">
+                        <figure><img src="static/images/game4.jpg" alt="#"/></figure> </a>
+                     </div>
+                     <div class="game">
+                        <h3>BlackJack</h3>
+                     </div>
+                  </div>
+                  <div class="col-md-4 padding_bottom">
+                     <div class="game_box">
+                        <figure><img src="static/images/game3.jpg" alt="#"/></figure>
+                     </div>
+                     <div class="game">
+                        <h3>Game 3</h3>
+                     </div>
+                  </div>
+                  
+               </div>
+            </div>
+         </div>
+         <!-- end casino -->
+         <!-- licens -->
+         <div class="licens">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="titlepage">
+                        <h2>Shopping Spree Time!</h2>
+                        <span></span>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <div id="licens" class="carousel slide licens_Carousel " data-ride="carousel">
+                        <ol class="carousel-indicators">
+                           <li data-target="#licens" data-slide-to="0" class="active"></li>
+                           <li data-target="#licens" data-slide-to="1"></li>
+                           <li data-target="#licens" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                           <div class="carousel-item active">
+                              <div class="container">
+                                 <div class="carousel-caption ">
+                                    <div class="row d_flex">
+                                       <div  class="col-md-6">
+                                          <div class="test_box">
+                                             <div class="jons">
+                                                <h4>CASINOCOINS</h4>
+                                             </div>
+                                             <p>Casino Coins can be earned through these games and can be spent in the shops on ranks and tags. You can buy them through playtime!</p>
+                                             <a class="read_more" href="">Buy Tags and Coins</a>
+                                          </div>
+                                       </div>
+                                       <div  class="col-md-6">
+                                          <div class="test_box">
+                                             <div class="jons">
+                                                <figure><img src="static/images/jons_img1.png" alt="#"/></figure>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                        </div>
+                        <a class="carousel-control-prev" href="#licens" role="button" data-slide="prev">
+                        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                        </a>
+                        <a class="carousel-control-next" href="#licens" role="button" data-slide="next">
+                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                        </a>
+                     </div>
+                     <p class="lorem">There are a few rank variations which will improve your game and allow you to earn more money per second in the site. In order to buy the next rank you need to have the previous unlocked.</p>
+                  </div>
+                  <div id="about" class="col-md-12">
+                     <ul class="spinit">
+                        <li><a href="Javascript:void(0)">Cotton Rank</a></li>
+                        <li><a href="Javascript:void(0)">Intermediate Rank</a></li>
+                        <li><a href="Javascript:void(0)">Pro Rank</a></li>
+                        <li><a href="Javascript:void(0)">Monke Rank</a></li>
+                     </ul>
+                     <div class="two_box">
+                        <div class="row d_flex">
+                           <div class="col-md-4">
+                              <div class="many_box_img">
+                                 <figure><img src="static/images/show.png" alt="#"/></figure>
+                              </div>
+                           </div>
+                           <div class="col-md-8">
+                              <div class="many_box">
+                                 <form action =  "/rankc" method = "POST">
+                                    <input type = "Submit" class="send_btn" value = "Cotton Rank (500)">
+                                 </form>
+                                 <form action =  "/ranki" method = "POST">
+                                    <input type = "Submit" class="send_btn" value = "Intermediate Rank (1000)">
+                                 </form>
+                                 <form action =  "/rankp" method = "POST">
+                                    <input type = "Submit" class="send_btn" value = "Pro Rank (2000)"> 
+                                 </form>
+                                 <form action =  "/rankm" method = "POST">
+                                    <input type = "Submit" class="send_btn" value = "Monke Rank (5000)" > 
+                                 </form>
+                                 <form action =  "/coinsfortime" method = "POST">
+                                    <input type = "Submit" class="send_btn" value = "Trade Minute Played for {{coinspermin}} coins" > 
+                                 </form>
+
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- end lLicens -->
+         <!-- customer -->
+         <div id="customer"  class="customer">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="titlepage">
+                        <h2>About us and Future Developement</h2>
+                        <span></span>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-10 offset-md-1">
+                     <div class="customer_text">
+                        <p>Our customers are incredibly happy and addicted to this website... Our money earning system allows our users to get easily addicted and keep staying on our website while we work on adding more games and entertainment systems that will expand our user interface and enhance our customer experience!</p>
+                        <div class="customer_box">
+                           <i><img src="static/images/customer.png" alt="#"/></i>
+                           <h4>Yuval Levi</h4>
+                           <span>Head Developer</span>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- end customer -->
+         <!-- reqeste -->
+         <div id="contact" class="reqeste">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="titlepage">
+                        <h2>Request A call Back</h2>
+                        <span></span>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-6 offset-md-3">
+                     <form id="cochang" class="form_main" action = "/review" method = "POST">
+                        <div class="row">
+                           <div class="col-md-12">
+                              <input class="form_control" placeholder="Name" type="text" name="Name">
+                           </div>
+                           <div class="col-md-12">
+                              <input class="form_control" placeholder="Phone number" type="text" name="Phonenumber">
+                           </div>
+                           <div class="col-md-12">
+                              <input class="form_control" placeholder="Email" type="text" name="Email">
+                           </div>
+                           <div class="col-md-12">
+                              <input class="form_control" placeholder="Message" type="text" name="Message">
+                           </div>
+                           <div class="col-md-12">
+                              <input type="Submit" class="send_btn" value = "Send">
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- end reqeste -->
+         <!--  footer -->
+         <footer>
+            <div class = "footer">
+               <div class="copyright">
+                  <div class="container">
+                     <p>Copyright 2019 All Right Reserved By <a href="https://html.design/">Free html Templates</a></p>
+                  </div>
+               </div>
+            </div>
+         </footer>
+         <!-- end footer -->
+      </div>
+      <div class="overlay"></div>
+      <!-- Javascript files-->
+      <script src="static/js/jquery.min.js"></script>
+      <script src="static/js/popper.min.js"></script>
+      <script src="static/js/bootstrap.bundle.min.js"></script>
+      <script src="static/js/jquery-3.0.0.min.js"></script>
+      <!-- sidebar -->
+      <script src="static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+       <script src="static/js/custom.js"></script>
+      <script type="text/javascript">
+         $(document).ready(function() {
+             $("#sidebar").mCustomScrollbar({
+                 theme: "minimal"
+             });
+         
+             $('#dismiss, .overlay').on('click', function() {
+                 $('#sidebar').removeClass('active');
+                 $('.overlay').removeClass('active');
+             });
+         
+             $('#sidebarCollapse').on('click', function() {
+                 $('#sidebar').addClass('active');
+                 $('.overlay').addClass('active');
+                 $('.collapse.in').toggleClass('in');
+                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+             });
+         });
+      </script>
+      <script>
+         $(document).ready(function() {
+             $(".fancybox").fancybox({
+                 openEffect: "none",
+                 closeEffect: "none"
+             });
+         
+             $(".zoom").hover(function() {
+         
+                 $(this).addClass('transition');
+             }, function() {
+         
+                 $(this).removeClass('transition');
+             });
+         });
+      </script>
+     
+   </body>
 </html>
+

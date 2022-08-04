@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BlackJack</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/style.css">
+
+</head>
+<body >
+
+ <style>
+body {
+    background-image: url('static/images/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+h1 {
+  font-weight: bold;
+  color: #f8eca6;
+  line-height: 66px;
+  font-size: 60px;
+  text-align: center;
+  background-image: linear-gradient(to bottom, #bc883d, #f5e47b, #bc883d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-bottom: 20px;
+}
+
+h3 {
+    letter-spacing: 0;
+    font-weight: normal;
+    position: relative;
+    padding: 0;
+    font-weight: normal;
+    line-height: normal;
+    color: #111111;
+    margin: 0
+}
+
+h3 a {
+    color: #212121;
+    text-decoration: none!important;
+    opacity: 1
+}
+
+.casino {
+    background-color: #1b0905;
+    padding-top: 90px;
+}
+
+.game_box {
+    background-image: linear-gradient(to right, #bc883d, #f5e47b, #bc883d);
+    padding: 20px;
+    border-color: black;
+    border-style: solid;
+}
+
+.game_box figure {
+    margin: 0;
+}
+
+.game_box figure img {
+    width: 100%;
+}
+
+.padding_bottom {
+    margin-bottom: 30px;
+}
+
+.game {
+    box-shadow: #000 0px 0px 9px -2px;
+    margin-top: -48px !important;
+    background: #fff;
+    max-width: 200px;
+    width: 100%;
+    margin: 0 auto;
+    border: #cca24f solid 4px;
+    padding: 8px;
+    z-index: 999;
+    position: relative;
+}
+
+.game h3 {
+    font-size: 20px;
+    text-align: center;
+}
+.send_btn {
+    font-size: 17px;
+    border: #fff solid 2px;
+    background-color: goldenrod;
+    color: #fff;
+    padding: 10px 60px;
+    border-radius: 35px;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    margin-top: 20px;
+}
+
+.send_btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.read_more {
+    width: 191px;
+    background: #1f0b04;
+    padding: 9px 0px;
+    color: #f3e179;
+    font-size: 17px;
+    display: inline-block;
+    text-align: center;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all .4s ease-in;
+    float: left;
+}
+
+.read_more:hover {
+    background: #fff;
+    color: #1f0b04 !important;
+    transition: all .4s ease-in;
+    border-radius: 20px;
+}
+
+</style> 
+
+
+<center>
+
+<div class = "container">
+    <div class = 'row'>
+        <div class = 'col-sm-2'>
+            <form action = "/coins" method = "POST"> 
+                <input type="hidden" value = "{{coins}}" name = "coin" id="coinvalue">
+                <input class = "send_btn" type = "submit" value = "Go Home!">
+            </form>
+        </div>
+        <div class = "col-sm-8">
+            <h1><b> BlackJack Game: </b> </h1>
+        </div>
+        <div class = "col-sm-2"><br>
+
+            <h3 style="color:white;"> <label id = "coins">{{coins}}</label>
+            <img src="static/images/jons_img1.png" width = "40" height = "40" alt="#"/>
+            </h3>
+        </div>
+    </div>
+</div>
+    <div class = "game_box">
+    </div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <br><br>
+    </div>
+  </div>
+  <div class="row">
+    <div class = "col-sm-1" style="width: 12.499999995%">
+    </div>
+    <div class="col-sm-1" style="width: 12.499999995%">
+      <img id = "dealercard1" src = "static/images/red_back.png" width = "100px" height = "140px">
+    </div>
+    <div class="col-sm-1" style="width: 12.499999995%">
+      <img id = "dealercard2" src = "static/images/red_back.png" width = "100px" height = "140px">
+    </div>
+    <div class="col-sm-1" style="width: 12.499999995%">
+        <img id = "dealercard3" src = "static/images/red_back.png" width = "100px" height = "140px">
+    </div>
+    <div class="col-sm-1" style="width: 12.499999995%">
+      <img id = "dealercard4" src = "static/images/red_back.png" width = "100px" height = "140px">
+    </div>
+    <div class="col-sm-1" style="width: 12.499999995%">
+        <img id = "dealercard5" src = "static/images/red_back.png" width = "100px" height = "140px">
+    </div>
+    <div class="col-sm-3"><br><br><br><br>
+        <div class = game>
+            <h3 id= "dealersum">Dealers Total: </h3>
+        </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col">
+        <br><br>
+    </div>
+  </div>
+  <div class="row">
+    <div class = "col-sm-1" style="width: 12.763%">
+    </div>
+    <div class="col-sm-1" style="width: 12.763%">
+      <img id = "card1" src = "static/images/red_back.png" width = "100px" height = "140px">
+    </div>
+    <div class="col-sm-1" style="width: 12.763%">
+      <img id = "card2" src = "static/images/red_back.png" width = "100px" height = "140px">
+    </div>
+    <div class="col-sm-1" style="width: 12.763%">
+        <img id = "card3" src = "static/images/red_back.png" width = "100px" height = "140px">
+    </div> 
+    <div class="col-sm-1" style="width: 12.763%">
+      <img id = "card4" src = "static/images/red_back.png" width = "100px" height = "140px">
+    </div>
+    <div class="col-sm-1" style="width: 12.763%">
+        <img id = "card5" src = "static/images/red_back.png" width = "100px" height = "140px">
+    </div>
+    <div class="col-sm"><br><br><br><br>
+        <div class = game>
+            <h3 id= "sum">Your Total: </h3>
+        </div>
+    </div>
+ </div>
+ <div class = "row">
+    <div class="col-sm-3">
+        <button class = "send_btn" onclick = "hit()"> Hit </button>
+      
+    </div>
+    <div class="col-sm-6">
+        <button id= "myBtn" class = "send_btn" onclick = "start()"> Start </button>
+    </div>
+    <div class="col-sm-3">
+        <button class = "send_btn" onclick = "fold()"> Stand </button>
+    </div>
+ </div>
+ <div class = "row">
+    <div>
+
+    </div>
+ </div>
+
+</div>
+
+ <!-- The Modal -->
+<div id="myModal" class="modal">
+
+<!-- Modal content -->
+    <div class="modal-content">
+        <input type = "text" id="bet" placeholder="Enter your bet.."> </input>
+        <button onclick="start()" class = "send_btn" > Insert </button>
+        <button onclick="cancel()" class = "send_btn" > Cancel </button>
+            
+    </div>
+</div>
+
+<div id="myModallose" class="modal">
+
+<!-- Modal content -->
+    <div class="modal-content">
+        <div class = "game">
+            <h3> You Lose! </h3>
+            <p id = "modallosecontent"> You have lost your bet and have {{coins}} coins left!</p>
+            <button id = 'closelose'>Close</button>
+        </div>
+            
+    </div>
+</div>
+
+<div id="myModalwin" class="modal">
+
+<!-- Modal content -->
+    <div class="modal-content">
+        <div class = "game">
+            <h3> You Win! </h3>
+            <p id = "modalwincontent"> You have won your bet and have {{coins}} coins left!</p>
+            <button id = 'closewin'>Close</button>
+        </div>
+            
+    </div>
+</div>
+
+<div id="myModaldraw" class="modal">
+
+<!-- Modal content -->
+    <div class="modal-content">
+        <div class = "game">
+            <h3> You Drew! </h3>
+            <p id = "modaldrawcontent"> You have drawn your bet and have {{coins}} coins left!</p>
+            <button id = 'closedraw'>Close</button>
+        </div>
+            
+    </div>
+</div>
+</center>  
+<script src = "static/js/script.js"> </script>
+</body>
+</html>
